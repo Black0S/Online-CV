@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photographie – Liam Jutteau</title>
+  <link rel="icon" href="files/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">L<span>.</span>J</a>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="experience.html">Expérience</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="formation.html">Formation</a></li>
+    <li><a href="photographie.html" class="active">Photographie</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="page-header" data-title="PHO">
+  <p class="page-header-tag">Projet personnel · @higankoil</p>
+  <h1>Photographie</h1>
+</header>
+
+<div class="page-body">
+  <section class="section" id="galerie">
+
+    <div class="gallery-intro reveal">
+      <p>
+        La photographie est pour moi un outil d'observation et d'exploration. À travers mon compte Instagram <strong>@higankoil</strong>, je partage mes créations et explorations artistiques : lumières urbaines, portraits, scènes du quotidien. Chaque photo est une façon de voir différemment.
+      </p>
+      <p style="margin-top:14px;">
+        <a href="https://instagram.com/higankoil" target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;">
+          ↗ Voir @higankoil sur Instagram
+        </a>
+      </p>
+    </div>
+
+    <div class="gallery-grid" id="gallery">
+
+      <div class="gallery-item reveal">
+        <img src="files/photos-1.jpg" alt="Photo 1 – @higankoil" loading="lazy" />
+        <div class="gallery-item-overlay">
+          <span class="gallery-item-label">@higankoil · 01</span>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal">
+        <img src="files/photos-2.jpg" alt="Photo 2 – @higankoil" loading="lazy" />
+        <div class="gallery-item-overlay">
+          <span class="gallery-item-label">@higankoil · 02</span>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal">
+        <img src="files/photos-3.jpeg" alt="Photo 3 – @higankoil" loading="lazy" />
+        <div class="gallery-item-overlay">
+          <span class="gallery-item-label">@higankoil · 03</span>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal">
+        <img src="files/photos-4.jpeg" alt="Photo 4 – @higankoil" loading="lazy" />
+        <div class="gallery-item-overlay">
+          <span class="gallery-item-label">@higankoil · 04</span>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal">
+        <img src="files/photos-5.jpeg" alt="Photo 5 – @higankoil" loading="lazy" />
+        <div class="gallery-item-overlay">
+          <span class="gallery-item-label">@higankoil · 05</span>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal">
+        <img src="files/photos-6.jpeg" alt="Photo 6 – @higankoil" loading="lazy" />
+        <div class="gallery-item-overlay">
+          <span class="gallery-item-label">@higankoil · 06</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visionneuse photo">
+  <button class="lightbox-close" id="lb-close" aria-label="Fermer">×</button>
+  <button class="lightbox-arrow lightbox-prev" id="lb-prev" aria-label="Précédent">‹</button>
+  <img id="lb-img" src="" alt="" />
+  <button class="lightbox-arrow lightbox-next" id="lb-next" aria-label="Suivant">›</button>
+  <p class="lightbox-counter" id="lb-counter"></p>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">L<span>.</span>J</div>
+      <p class="footer-tagline">Curieux, polyvalent,<br>toujours en apprentissage.</p>
+    </div>
+    <div>
+      <p class="footer-heading">Navigation</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="experience.html">Expérience</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="formation.html">Formation</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-heading">Suivre</p>
+      <ul class="footer-links">
+        <li><a href="https://instagram.com/higankoil" target="_blank" rel="noopener">@higankoil sur Instagram</a></li>
+        <li><a href="mailto:tao.jutteau@gmail.com">tao.jutteau@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/liam-jutteau" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Liam Jutteau — Valence, France</span>
+    <span>Fait avec soin ♥</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/gallery.js"></script>
+</body>
+</html>
