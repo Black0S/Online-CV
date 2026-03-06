@@ -3,653 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de Liam Jutteau – Valence, France. Community Manager, Formateur, Photographe." />
   <title>Liam Jutteau – Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --ink: #0d0d0d;
-      --paper: #f5f0e8;
-      --cream: #ede7d9;
-      --accent: #c8522a;
-      --accent2: #2a5fc8;
-      --muted: #7a7060;
-      --border: #c8bfaa;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
-      overflow-x: hidden;
-    }
-
-    /* ── NOISE TEXTURE ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.4;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-left {
-      background: var(--ink);
-      padding: 60px 56px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-left::before {
-      content: 'LJ';
-      position: absolute;
-      bottom: -40px;
-      right: -20px;
-      font-family: 'Playfair Display', serif;
-      font-size: 260px;
-      font-weight: 900;
-      color: rgba(255,255,255,0.03);
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    .hero-tag {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.2s forwards;
-    }
-
-    .hero-name {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(52px, 6vw, 80px);
-      font-weight: 900;
-      color: white;
-      line-height: 1.0;
-      margin-bottom: 28px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.4s forwards;
-    }
-
-    .hero-name span {
-      color: var(--accent);
-      display: block;
-    }
-
-    .hero-desc {
-      font-size: 15px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.8;
-      max-width: 380px;
-      margin-bottom: 40px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.6s forwards;
-    }
-
-    .hero-contacts {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.8s forwards;
-    }
-
-    .hero-contacts a {
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: color 0.2s;
-    }
-
-    .hero-contacts a:hover { color: var(--accent); }
-
-    .hero-contacts a::before {
-      content: '';
-      width: 24px;
-      height: 1px;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .hero-right {
-      background: var(--cream);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 60px 56px;
-      position: relative;
-    }
-
-    .hero-right::after {
-      content: '';
-      position: absolute;
-      top: 40px;
-      right: 40px;
-      width: 120px;
-      height: 120px;
-      border: 1px solid var(--border);
-      border-radius: 50%;
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      margin-bottom: 48px;
-    }
-
-    .stat {
-      background: white;
-      padding: 28px 24px;
-      opacity: 0;
-      animation: fadeUp 0.8s forwards;
-    }
-
-    .stat:nth-child(1) { animation-delay: 0.3s; }
-    .stat:nth-child(2) { animation-delay: 0.45s; }
-    .stat:nth-child(3) { animation-delay: 0.6s; }
-    .stat:nth-child(4) { animation-delay: 0.75s; }
-
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      font-weight: 900;
-      color: var(--ink);
-      line-height: 1;
-    }
-
-    .stat-num sup {
-      font-size: 18px;
-      color: var(--accent);
-    }
-
-    .stat-label {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-top: 6px;
-    }
-
-    .scroll-hint {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .scroll-hint::before {
-      content: '';
-      width: 40px;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(245,240,232,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-      padding: 0 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
-
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .nav-logo span { color: var(--accent); }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--accent); }
-
-    /* ── SECTIONS ── */
-    section {
-      padding: 100px 56px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 20px;
-      margin-bottom: 64px;
-    }
-
-    .section-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 72px;
-      font-weight: 900;
-      color: var(--cream);
-      line-height: 1;
-      user-select: none;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: var(--border);
-      margin: 80px 0;
-    }
-
-    /* ── EXPERIENCE ── */
-    .exp-list { display: flex; flex-direction: column; gap: 0; }
-
-    .exp-item {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 0;
-      border-top: 1px solid var(--border);
-      padding: 36px 0;
-      transition: background 0.3s;
-      position: relative;
-    }
-
-    .exp-item::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.4s ease;
-    }
-
-    .exp-item:hover::after { width: 100%; }
-
-    .exp-period {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      padding-top: 4px;
-      text-transform: uppercase;
-    }
-
-    .exp-content { padding-left: 40px; border-left: 1px solid var(--border); }
-
-    .exp-role {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 4px;
-    }
-
-    .exp-company {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--accent);
-      margin-bottom: 16px;
-      letter-spacing: 0.05em;
-    }
-
-    .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-
-    .tag {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      border-radius: 2px;
-      transition: all 0.2s;
-    }
-
-    .tag:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(200,82,42,0.05);
-    }
-
-    .exp-bullets {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .exp-bullets li {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-      padding-left: 16px;
-      position: relative;
-    }
-
-    .exp-bullets li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: 12px;
-    }
-
-    /* ── SKILLS ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    .skill-card {
-      background: var(--cream);
-      padding: 36px 32px;
-      transition: background 0.3s;
-      cursor: default;
-    }
-
-    .skill-card:hover { background: var(--ink); }
-    .skill-card:hover .skill-name { color: white; }
-    .skill-card:hover .skill-bar-fill { background: var(--accent); }
-    .skill-card:hover .skill-level { color: rgba(255,255,255,0.5); }
-
-    .skill-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 16px;
-      transition: color 0.3s;
-    }
-
-    .skill-bar {
-      height: 2px;
-      background: var(--border);
-      border-radius: 1px;
-      margin-bottom: 8px;
-    }
-
-    .skill-bar-fill {
-      height: 100%;
-      background: var(--ink);
-      border-radius: 1px;
-      transition: background 0.3s;
-    }
-
-    .skill-level {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-
-    /* ── LANGUES ── */
-    .lang-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-    }
-
-    .lang-card {
-      background: var(--cream);
-      padding: 40px 32px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
-    }
-
-    .lang-card:hover { background: var(--ink); }
-    .lang-card:hover .lang-name { color: white; }
-    .lang-card:hover .lang-level { color: var(--accent); }
-    .lang-card:hover .lang-flag { opacity: 0.15; }
-
-    .lang-flag {
-      font-size: 48px;
-      margin-bottom: 16px;
-      display: block;
-      transition: opacity 0.3s;
-    }
-
-    .lang-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 8px;
-      transition: color 0.3s;
-    }
-
-    .lang-level {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-
-    .lang-badge {
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 11px;
-      padding: 3px 10px;
-      background: var(--accent);
-      color: white;
-      border-radius: 2px;
-      font-weight: 500;
-    }
-
-    /* ── FORMATION ── */
-    .formation-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-    }
-
-    .formation-card {
-      background: var(--cream);
-      padding: 40px 36px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .formation-card::before {
-      content: attr(data-year);
-      position: absolute;
-      top: 20px;
-      right: 24px;
-      font-family: 'Playfair Display', serif;
-      font-size: 52px;
-      font-weight: 900;
-      color: rgba(0,0,0,0.04);
-      line-height: 1;
-    }
-
-    .formation-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--ink);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      color: white;
-      font-size: 20px;
-    }
-
-    .formation-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-
-    .formation-sub {
-      font-size: 13px;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 14px;
-    }
-
-    .formation-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* ── PASSIONS ── */
-    .passions-flex {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .passion-pill {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 24px;
-      background: var(--cream);
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink);
-      cursor: default;
-      transition: all 0.25s;
-      border: 1px solid transparent;
-    }
-
-    .passion-pill:hover {
-      background: var(--ink);
-      color: white;
-      border-color: var(--ink);
-    }
-
-    .passion-pill span:first-child { font-size: 22px; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--ink);
-      color: rgba(255,255,255,0.5);
-      text-align: center;
-      padding: 48px 56px;
-      font-size: 13px;
-    }
-
-    footer strong { color: white; }
-    footer a { color: var(--accent); text-decoration: none; }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-right { display: none; }
-      nav { padding: 0 24px; }
-      .nav-links { gap: 20px; }
-      section { padding: 64px 24px; }
-      .exp-item { grid-template-columns: 1fr; }
-      .exp-content { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 16px; margin-top: 8px; }
-      .skills-grid { grid-template-columns: 1fr 1fr; }
-      .lang-grid { grid-template-columns: 1fr 1fr; }
-      .formation-grid { grid-template-columns: 1fr; }
-      .section-num { font-size: 48px; }
-    }
-  </style>
+  <link rel="icon" href="files/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
-<!-- HERO -->
-<div class="hero">
+<!-- ══════════════════════ NAV ══════════════════════ -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">L<span>.</span>J</a>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="experience.html">Expérience</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="formation.html">Formation</a></li>
+    <li><a href="photographie.html">Photographie</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section class="hero">
+
   <div class="hero-left">
     <p class="hero-tag">Portfolio · Valence, France</p>
     <h1 class="hero-name">Liam<span>Jutteau</span></h1>
     <p class="hero-desc">
-      Curieux, polyvalent et passionné par les gens et les idées. À l'aise en contact client, en numérique et en apprentissage continu. Toujours prêt à m'investir pleinement.
+      Curieux, polyvalent et passionné par les gens et les idées. À l'aise en contact client, en numérique et en apprentissage continu. Toujours prêt à m'investir pleinement dans chaque projet.
     </p>
+    <div class="hero-cta">
+      <a href="experience.html" class="btn btn-primary">Voir mon parcours</a>
+      <a href="contact.html" class="btn btn-outline">Me contacter</a>
+    </div>
     <div class="hero-contacts">
       <a href="mailto:tao.jutteau@gmail.com">tao.jutteau@gmail.com</a>
       <a href="tel:0680669718">06 80 66 97 18</a>
-      <a href="https://www.linkedin.com/in/liam-jutteau" target="_blank">LinkedIn – Liam Jutteau</a>
-      <a href="https://instagram.com/higankoil" target="_blank">Instagram – @higankoil</a>
+      <a href="https://www.linkedin.com/in/liam-jutteau" target="_blank" rel="noopener">LinkedIn – Liam Jutteau</a>
     </div>
   </div>
+
   <div class="hero-right">
     <div class="stat-grid">
       <div class="stat">
-        <div class="stat-num">6<sup>+</sup></div>
+        <div class="stat-num">8<sup>+</sup></div>
         <div class="stat-label">Expériences</div>
       </div>
       <div class="stat">
@@ -657,7 +56,7 @@
         <div class="stat-label">Langues</div>
       </div>
       <div class="stat">
-        <div class="stat-num">8<sup>+</sup></div>
+        <div class="stat-num">9<sup>+</sup></div>
         <div class="stat-label">Compétences</div>
       </div>
       <div class="stat">
@@ -665,367 +64,119 @@
         <div class="stat-label">Ans d'activité</div>
       </div>
     </div>
-    <div class="scroll-hint">Découvrir le parcours</div>
+    <div class="hero-nav-hint">
+      <a href="experience.html"     class="hero-pill">Expérience</a>
+      <a href="competences.html"    class="hero-pill">Compétences</a>
+      <a href="formation.html"      class="hero-pill">Formation</a>
+      <a href="photographie.html"   class="hero-pill">Photo</a>
+    </div>
   </div>
+
+</section>
+
+<!-- ══════════════════════ APERÇU RAPIDE ══════════════════════ -->
+<div class="page-body">
+
+  <!-- WHO AM I -->
+  <section class="section" id="about">
+    <div class="section-header reveal">
+      <span class="section-num">00</span>
+      <div>
+        <h2 class="section-title">À propos</h2>
+        <p class="section-sub">Un profil taillé pour le contact, le numérique et l'apprentissage.</p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;" class="reveal">
+      <div style="background:var(--cream);padding:44px 40px;">
+        <p style="font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:16px;color:var(--ink);">
+          « Touche-à-tout et curieux avant tout. »
+        </p>
+        <p style="font-size:14px;color:var(--muted);line-height:1.85;">
+          De la caisse d'un supermarché à la formation ERP, en passant par la stratégie digitale et la photographie, mon parcours est celui de quelqu'un qui apprend en faisant. Chaque expérience m'a appris quelque chose de différent : la rigueur, le sens du service, la créativité, la pédagogie.
+        </p>
+      </div>
+      <div style="background:var(--ink);padding:44px 40px;">
+        <p style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;font-weight:500;">Ce qui me définit</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);padding-left:18px;position:relative;">
+            <span style="position:absolute;left:0;color:var(--accent);">—</span> Passionné par la lecture, les langues et les cultures
+          </li>
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);padding-left:18px;position:relative;">
+            <span style="position:absolute;left:0;color:var(--accent);">—</span> Photographe autodidacte (@higankoil)
+          </li>
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);padding-left:18px;position:relative;">
+            <span style="position:absolute;left:0;color:var(--accent);">—</span> En apprentissage du coréen
+          </li>
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);padding-left:18px;position:relative;">
+            <span style="position:absolute;left:0;color:var(--accent);">—</span> Passionné d'IA et de création numérique
+          </li>
+          <li style="font-size:14px;color:rgba(255,255,255,0.6);padding-left:18px;position:relative;">
+            <span style="position:absolute;left:0;color:var(--accent);">—</span> Basé à Valence, disponible immédiatement
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASSIONS -->
+  <div class="divider"></div>
+  <section class="section" id="passions">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <div>
+        <h2 class="section-title">Ce que j'aime</h2>
+        <p class="section-sub">Les activités qui nourrissent ma créativité et ma curiosité.</p>
+      </div>
+    </div>
+    <div class="passions-flex">
+      <div class="passion-pill reveal"><span class="icon">📖</span><span>Lecture</span></div>
+      <div class="passion-pill reveal"><span class="icon">📷</span><span>Photographie</span></div>
+      <div class="passion-pill reveal"><span class="icon">⚽</span><span>Sport</span></div>
+      <div class="passion-pill reveal"><span class="icon">🌏</span><span>Langues &amp; Cultures</span></div>
+      <div class="passion-pill reveal"><span class="icon">🤖</span><span>Intelligence Artificielle</span></div>
+      <div class="passion-pill reveal"><span class="icon">🎨</span><span>Création numérique</span></div>
+      <div class="passion-pill reveal"><span class="icon">🇰🇷</span><span>Culture coréenne</span></div>
+      <div class="passion-pill reveal"><span class="icon">💡</span><span>Entrepreneuriat</span></div>
+      <div class="passion-pill reveal"><span class="icon">✈️</span><span>Voyages</span></div>
+      <div class="passion-pill reveal"><span class="icon">🎵</span><span>Musique</span></div>
+    </div>
+  </section>
+
 </div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">L<span>.</span>J</div>
-  <ul class="nav-links">
-    <li><a href="#experience">Expérience</a></li>
-    <li><a href="#competences">Compétences</a></li>
-    <li><a href="#langues">Langues</a></li>
-    <li><a href="#formation">Formation</a></li>
-    <li><a href="#passions">Passions</a></li>
-  </ul>
-</nav>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-header reveal">
-    <span class="section-num">01</span>
-    <h2 class="section-title">Expériences</h2>
-  </div>
-  <div class="exp-list">
-
-    <div class="exp-item reveal">
-      <div class="exp-period">Nov. 2024<br>Aujourd'hui</div>
-      <div class="exp-content">
-        <div class="exp-role">Community Manager</div>
-        <div class="exp-company">NOFLO – Gestion de Réseaux Sociaux · Indépendant</div>
-        <ul class="exp-bullets">
-          <li>Gestion des réseaux sociaux : Instagram, Facebook, TikTok</li>
-          <li>Création de contenus engageants et stratégie éditoriale</li>
-          <li>Modération, animation de communautés et analyse des performances</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="tag">Social Media</span>
-          <span class="tag">Stratégie</span>
-          <span class="tag">Création contenu</span>
-        </div>
-      </div>
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">L<span>.</span>J</div>
+      <p class="footer-tagline">Curieux, polyvalent,<br>toujours en apprentissage.</p>
     </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-period">Mai 2025<br>Aujourd'hui</div>
-      <div class="exp-content">
-        <div class="exp-role">Formateur & Assistant Technique Dolibarr</div>
-        <div class="exp-company">Indépendant</div>
-        <ul class="exp-bullets">
-          <li>Formation et accompagnement d'utilisateurs et d'entreprises sur Dolibarr ERP/CRM</li>
-          <li>Rédaction de documentation technique et support client</li>
-          <li>Intégration des modules Patas Monkey</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="tag">Dolibarr</span>
-          <span class="tag">Formation</span>
-          <span class="tag">ERP/CRM</span>
-        </div>
-      </div>
+    <div>
+      <p class="footer-heading">Navigation</p>
+      <ul class="footer-links">
+        <li><a href="experience.html">Expérience</a></li>
+        <li><a href="competences.html">Compétences &amp; Langues</a></li>
+        <li><a href="formation.html">Formation</a></li>
+        <li><a href="photographie.html">Photographie</a></li>
+      </ul>
     </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-period">Nov. 2022<br>Août 2023</div>
-      <div class="exp-content">
-        <div class="exp-role">Caissier – Vendeur</div>
-        <div class="exp-company">Carrefour City · CDI</div>
-        <ul class="exp-bullets">
-          <li>Accueil, orientation et conseil client au quotidien</li>
-          <li>Encaissement, gestion de caisse et clôture journalière</li>
-          <li>Mise en rayon, rotation des produits et gestion des stocks</li>
-          <li>Ouverture / fermeture du magasin, travail en équipe</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="tag">Commerce</span>
-          <span class="tag">Service client</span>
-          <span class="tag">Stocks</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-period">Nov. 2023<br>Avr. 2024</div>
-      <div class="exp-content">
-        <div class="exp-role">Affiliation Marketing</div>
-        <div class="exp-company">Fly-Category · Indépendant</div>
-        <ul class="exp-bullets">
-          <li>Développement d'une compréhension approfondie des tendances du marché</li>
-          <li>Analyse des données et stratégies adaptées aux évolutions du marché</li>
-          <li>Utilisation de ChatGPT pour optimiser les performances</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="tag">Marketing</span>
-          <span class="tag">Analyse</span>
-          <span class="tag">IA</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-period">Avr. 2022<br>Oct. 2022</div>
-      <div class="exp-content">
-        <div class="exp-role">Agent d'état</div>
-        <div class="exp-company">Armée de l'air et de l'espace · Fonctionnaire</div>
-        <ul class="exp-bullets">
-          <li>Rigueur, discipline et sens des responsabilités dans un environnement exigeant</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="tag">Discipline</span>
-          <span class="tag">Rigueur</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-period">Juil. 2021<br>Août 2021</div>
-      <div class="exp-content">
-        <div class="exp-role">Barista & Serveur</div>
-        <div class="exp-company">French Café · CDI</div>
-        <ul class="exp-bullets">
-          <li>Service client polyvalent, encaissement et travail en équipe</li>
-          <li>Préparation en cuisine, adaptabilité et gestion du rythme</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="tag">Service</span>
-          <span class="tag">Polyvalence</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-period">Déc. 2020<br>Juin 2021</div>
-      <div class="exp-content">
-        <div class="exp-role">Spécialiste SEO</div>
-        <div class="exp-company">Couleurs Lagon · Indépendant</div>
-        <ul class="exp-bullets">
-          <li>Développement du trafic d'un site internet, amélioration du référencement</li>
-          <li>Expérience sur WordPress et optimisation pour les moteurs de recherche</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="tag">SEO</span>
-          <span class="tag">WordPress</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-period">Déc. 2018<br>Fév. 2019</div>
-      <div class="exp-content">
-        <div class="exp-role">Vendeur Multimédia</div>
-        <div class="exp-company">Compact Mégastore · CDI</div>
-        <ul class="exp-bullets">
-          <li>Conseil client en secteur multimédia, merchandising visuel</li>
-          <li>Gestion et vérification des stocks physiques et informatiques</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="tag">Vente</span>
-          <span class="tag">Multimédia</span>
-          <span class="tag">Stocks</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- COMPÉTENCES -->
-<section id="competences">
-  <div class="section-header reveal">
-    <span class="section-num">02</span>
-    <h2 class="section-title">Compétences</h2>
-  </div>
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <div class="skill-name">Accueil & Conseil client</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:95%"></div></div>
-      <div class="skill-level">Expert</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-name">Gestion de caisse</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div>
-      <div class="skill-level">Avancé</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-name">Réseaux sociaux</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div>
-      <div class="skill-level">Avancé</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-name">ERP/CRM – Dolibarr</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
-      <div class="skill-level">Avancé</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-name">Suite Office</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
-      <div class="skill-level">Avancé</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-name">Création visuelle & IA</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:78%"></div></div>
-      <div class="skill-level">Intermédiaire+</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-name">SEO / WordPress</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:72%"></div></div>
-      <div class="skill-level">Intermédiaire</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-name">Mise en rayon & stocks</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div>
-      <div class="skill-level">Avancé</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-name">Formation & Pédagogie</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="width:82%"></div></div>
-      <div class="skill-level">Avancé</div>
+    <div>
+      <p class="footer-heading">Contact</p>
+      <ul class="footer-links">
+        <li><a href="mailto:tao.jutteau@gmail.com">tao.jutteau@gmail.com</a></li>
+        <li><a href="tel:0680669718">06 80 66 97 18</a></li>
+        <li><a href="https://www.linkedin.com/in/liam-jutteau" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://instagram.com/higankoil" target="_blank" rel="noopener">@higankoil</a></li>
+      </ul>
     </div>
   </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- LANGUES -->
-<section id="langues">
-  <div class="section-header reveal">
-    <span class="section-num">03</span>
-    <h2 class="section-title">Langues</h2>
+  <div class="footer-bottom">
+    <span>© 2026 Liam Jutteau — Valence, France</span>
+    <span>Fait avec soin ♥</span>
   </div>
-  <div class="lang-grid">
-    <div class="lang-card reveal">
-      <span class="lang-flag">🇫🇷</span>
-      <div class="lang-name">Français</div>
-      <div class="lang-level">Langue maternelle</div>
-      <span class="lang-badge">C2</span>
-    </div>
-    <div class="lang-card reveal">
-      <span class="lang-flag">🇬🇧</span>
-      <div class="lang-name">Anglais</div>
-      <div class="lang-level">Courant</div>
-      <span class="lang-badge">C1</span>
-    </div>
-    <div class="lang-card reveal">
-      <span class="lang-flag">🇪🇸</span>
-      <div class="lang-name">Espagnol</div>
-      <div class="lang-level">Notions</div>
-      <span class="lang-badge">A1</span>
-    </div>
-    <div class="lang-card reveal">
-      <span class="lang-flag">🇰🇷</span>
-      <div class="lang-name">Coréen</div>
-      <div class="lang-level">En apprentissage</div>
-      <span class="lang-badge">Débutant</span>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- FORMATION -->
-<section id="formation">
-  <div class="section-header reveal">
-    <span class="section-num">04</span>
-    <h2 class="section-title">Formation</h2>
-  </div>
-  <div class="formation-grid">
-    <div class="formation-card reveal" data-year="2024">
-      <div class="formation-icon">🎓</div>
-      <div class="formation-title">Formation Business en ligne</div>
-      <div class="formation-sub">Educate – Plateforme de formation · Avr. 2024 – Aujourd'hui</div>
-      <div class="formation-desc">
-        Formation intensive en ligne couvrant l'entrepreneuriat, le marketing digital, la stratégie business et le développement personnel. Spécialisation bilinguisme et intelligence artificielle appliquée au business.
-      </div>
-    </div>
-    <div class="formation-card reveal" data-year="2020">
-      <div class="formation-icon">📚</div>
-      <div class="formation-title">Baccalauréat STMG – Gestion Finance</div>
-      <div class="formation-sub">Sciences et Technologies du Management et de la Gestion</div>
-      <div class="formation-desc">
-        Spécialité Gestion Finance. Acquisition des fondamentaux en management, comptabilité, finance d'entreprise et sciences de gestion. Base solide pour comprendre les environnements professionnels.
-      </div>
-    </div>
-    <div class="formation-card reveal" data-year="2021">
-      <div class="formation-icon">🌐</div>
-      <div class="formation-title">Service Civique</div>
-      <div class="formation-sub">SEA – Nouvelle-Calédonie · Sept. 2021 – Mars 2022</div>
-      <div class="formation-desc">
-        Gestion administrative, plannings, coordination d'équipe et supervision d'activités extra-scolaires. Développement du sens de l'organisation et de la communication.
-      </div>
-    </div>
-    <div class="formation-card reveal" data-year="Auto">
-      <div class="formation-icon">🤖</div>
-      <div class="formation-title">Auto-formation Numérique & IA</div>
-      <div class="formation-sub">En continu</div>
-      <div class="formation-desc">
-        Apprentissage autonome en création visuelle avec l'IA (ComfyUI), prompting, outils numériques, et photographie. Veille constante sur les nouvelles technologies et tendances digitales.
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PASSIONS -->
-<section id="passions">
-  <div class="section-header reveal">
-    <span class="section-num">05</span>
-    <h2 class="section-title">Ce que j'aime</h2>
-  </div>
-  <div class="passions-flex">
-    <div class="passion-pill reveal"><span>📖</span><span>Lecture</span></div>
-    <div class="passion-pill reveal"><span>📷</span><span>Photographie</span></div>
-    <div class="passion-pill reveal"><span>⚽</span><span>Sport</span></div>
-    <div class="passion-pill reveal"><span>🌏</span><span>Langues & Cultures</span></div>
-    <div class="passion-pill reveal"><span>🤖</span><span>Intelligence Artificielle</span></div>
-    <div class="passion-pill reveal"><span>🎨</span><span>Création numérique</span></div>
-    <div class="passion-pill reveal"><span>🇰🇷</span><span>Culture coréenne</span></div>
-    <div class="passion-pill reveal"><span>💡</span><span>Entrepreneuriat</span></div>
-    <div class="passion-pill reveal"><span>🎵</span><span>Musique</span></div>
-    <div class="passion-pill reveal"><span>✈️</span><span>Voyages</span></div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:white;margin-bottom:12px;">Liam Jutteau</p>
-  <p style="margin-bottom:8px;">
-    <a href="mailto:tao.jutteau@gmail.com">tao.jutteau@gmail.com</a>
-    &nbsp;·&nbsp;
-    <a href="tel:0680669718">06 80 66 97 18</a>
-    &nbsp;·&nbsp;
-    Valence, France
-  </p>
-  <p style="margin-top:20px;font-size:11px;opacity:0.4;">© 2026 Liam Jutteau</p>
 </footer>
 
-<script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        e.target.style.transitionDelay = (i % 4) * 80 + 'ms';
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => obs.observe(el));
-
-  // Active nav
-  const sections = document.querySelectorAll('section[id]');
-  window.addEventListener('scroll', () => {
-    let cur = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 100) cur = s.id;
-    });
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--accent)' : '';
-    });
-  });
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
